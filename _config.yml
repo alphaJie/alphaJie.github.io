@@ -22,9 +22,13 @@ plainwhite:
   html_lang: "zh" # set the lang attribute of the <html> tag for the pages. See here for a list of codes: https://www.w3schools.com/tags/ref_country_codes.asp
 
   navigation:
-    - title: My Work
+    - title: JAVA基础(连接未添加)
       url: "/my-work"
-    - title: Resume
+    - title: 并发编程(连接未添加)
+      url: "/resume"
+    - title: Spring(连接未添加)
+      url: "/my-work"
+    - title: MySQL(连接未添加)
       url: "/resume"
 
   # generate social links in footer
