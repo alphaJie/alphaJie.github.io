@@ -5,7 +5,7 @@
 **Blog**: [alphajie.github.io](https://alphajie.github.io/)
 
 
-## [JAVA基础](https://alphajie.github.io/basicOfJava.html)
+## [JAVA基础](https://alphajie.github.io/basic-of-java.html)
 [Java中异常分类](https://alphajie.github.io/java/%E5%BC%82%E5%B8%B8/2020/08/26/Exception-in-java.html)
 
 ## [并发编程](https://alphajie.github.io/JAVA/basicOfJava.html)
