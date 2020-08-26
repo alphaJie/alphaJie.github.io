@@ -5,12 +5,13 @@ date:   2020-08-26 17:03:36 +0530
 categories: JAVA 异常
 ---
 ![plainwhite theme preview](/assets/images/exceptionInJava.png)
+
 **Error**
 1．总是不可控制的(unchecked)。
 2．经常用来用于表示系统级错误或低层资源的错误。
 3．如何可能的话，应该在系统级被捕捉。
 
-Exception：
+**Exception**
 1．可以是可被控制(checked) 或不可控制的(unchecked)。
 2．表示一个由程序员导致的错误或者其他外部原因(非程序原因)导致的错误。
 3．应该在应用程序级被处理。

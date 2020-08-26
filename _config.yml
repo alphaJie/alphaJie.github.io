@@ -19,7 +19,7 @@ plainwhite:
   search: true # set to true to enable searchbar
   dark_mode: true # set to true to add dark mode toggle
   portfolio_image: "assets/touxiang.png" # the path from the base directory of the site to the image to display (no / at the start)
-  html_lang: "en" # set the lang attribute of the <html> tag for the pages. See here for a list of codes: https://www.w3schools.com/tags/ref_country_codes.asp
+  html_lang: "zh" # set the lang attribute of the <html> tag for the pages. See here for a list of codes: https://www.w3schools.com/tags/ref_country_codes.asp
 
   navigation:
     - title: My Work
@@ -27,12 +27,6 @@ plainwhite:
     - title: Resume
       url: "/resume"
 
-  tagline: |
-    First Line.
-
-    Second Line.
-
-    Third Line.
   # generate social links in footer
   social_links:
     #twitter: alphajie
