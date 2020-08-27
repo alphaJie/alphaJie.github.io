@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Spring事务传播行为和隔离级别"
-date:   2020-03-23 11:58:23 +0530
+date:   2020-08-27 11:58:23 +0530
 categories: Spring Transactional
 ---
 ## 事务传播行为
@@ -93,7 +93,7 @@ methodA使用默认事务，methodB使用MANDATORY，步骤
 
 doService()方法如果直接调用methodB，则执行methodB代码，不使用事务。
 
-**情况七 methodB使用NEVER**  
+**<font color=#FF0000>情况七 methodB使用NEVER</font>**  
 methodA使用默认事务，methodB使用NEVER，步骤 
 1. 开启事务
 2. 执行methodA的代码doSomethingPre()
@@ -102,7 +102,7 @@ methodA使用默认事务，methodB使用NEVER，步骤
 
 doService()方法如果直接调用methodB，则执行methodB代码，不使用事务。
 
-##事务隔离级别
+## 事务隔离级别
 是指当多个事务同时执行，并且操作同一个数据时，事务对此数据的占有情况。并发可能会导致以下问题：  
 **脏读（Dirty read）**：脏读发生在一个事务读取了被另一个事务改写但尚未提交的数据时。如果这些改变在稍后被回滚了，那么第一个事务读取的数据就会是无效的。  
 **不可重复读（Nonrepeatable read）**：不可重复读发生在一个事务执行相同的查询两次或两次以上，但每次查询结果都不相同时。这通常是由于另一个并发事务在两次查询之间更新了数据。  
@@ -116,7 +116,7 @@ doService()方法如果直接调用methodB，则执行methodB代码，不使用�
 - REPEATABLE_READ：可重复读(会出现幻读)，MySQL默认级别   
 - DEFAULT：默认使用后端数据库的隔离级别   
 
-##注意事项
+## 注意事项
 - @Transactional 只能被应用到public方法上, 对于其它非public的方法,如果标记了@Transactional也不会报错,但方法没有事务功能.
 - @Transactional只是标签，要使用事务需要开始事务功能\<tx:annotation-driven/>
 - spring默认只有需要运行时异常才会回滚事务（即RuntimeException下子类），而其他受检异常不回滚，可通过rollbackFor参数指定回滚异常
