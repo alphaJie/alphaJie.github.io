@@ -93,7 +93,7 @@ methodA使用默认事务，methodB使用MANDATORY，步骤
 
 doService()方法如果直接调用methodB，则执行methodB代码，不使用事务。
 
-**<font color=#FF0000>情况七 methodB使用NEVER</font>**  
+<font color=#FF0000>**情况七 methodB使用NEVER**</font>  
 methodA使用默认事务，methodB使用NEVER，步骤 
 1. 开启事务
 2. 执行methodA的代码doSomethingPre()
