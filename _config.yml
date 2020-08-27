@@ -26,8 +26,8 @@ plainwhite:
       url: "/basic-of-java.html"
     - title: 并发编程(连接未添加)
       url: "/404.html"
-    - title: Spring(连接未添加)
-      url: "/my-work"
+    - title: Spring
+      url: "/spring.html"
     - title: MySQL(连接未添加)
       url: "/resume"
 
