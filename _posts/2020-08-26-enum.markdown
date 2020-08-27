@@ -1,0 +1,148 @@
+---
+layout: post
+title:  "枚举的使用"
+date:   2020-03-23 21:10:47 +0530
+categories: JAVA enum
+---
+## 定义
+在Java中使用enum关键字修饰，成员由一组固定的常量组成。
+
+## 使用场景
+- 常量字典
+- 单例
+
+## 示例
+**示例一 常量**
+```java
+public enum Color{
+    READ,BLUE,PURPLE
+}
+```
+
+**示例二 常量**
+```java
+public enum State{
+    TOSUBMIT("待提交",0),SUBMITTED("已提交",1),COMPLETED("已完成",2)
+    
+    //对应的成员变量
+    private String name;
+    private int index;
+    //构造方法
+    private State(String name,int index){
+        this.name = name;
+        this.index = index;
+    }
+
+    public static String getName(int index) {
+        for (State c : State.values()) {
+            if (c.getIndex() == index) {
+                return c.name;
+            }
+        }
+    }
+    // get set 方法
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public int getIndex() {
+        return index;
+    }
+    public void setIndex(int index) {
+        this.index = index;
+    }
+}
+```
+**示例三 使用接口组织枚举**
+```java
+public interface Dict{
+    public enum Color{
+        READ,BLUE,PURPLE
+    }
+    public enum State{
+        TOSUBMIT("待提交",0),SUBMITTED("已提交",1),COMPLETED("已完成",2)
+        
+        //对应的成员变量
+        private String name;
+        private int index;
+        //构造方法
+        private State(String name,int index){
+            this.name = name;
+            this.index = index;
+        }
+    }
+
+}
+```
+**示例四 单例**
+```java
+public class User {
+    //私有化构造函数
+    private User(){ }
+ 
+    //定义一个静态枚举类
+    static enum SingletonEnum{
+        //创建一个枚举对象，该对象天生为单例
+        INSTANCE;
+        private User user;
+        //私有化枚举的构造函数
+        private SingletonEnum(){
+            user=new User();
+        }
+        public User getInstnce(){
+            return user;
+        }
+    }
+ 
+    //对外暴露一个获取User对象的静态方法
+    public static User getInstance(){
+        return SingletonEnum.INSTANCE.getInstnce();
+    }
+}
+```
+## 为什么是线程安全的类
+**示例一的反编译代码**
+```java
+//Color类被final修饰
+public final class Color extends Enum
+{
+    //成员都是static final的Color实例
+	public static final Color READ;
+	public static final Color BLUE;
+	public static final Color PURPLE;
+	private static final Color $VALUES[];
+
+	public static Color[] values()
+	{
+		return (Color[])$VALUES.clone();
+	}
+
+	public static Color valueOf(String s)
+	{
+		return (Color)Enum.valueOf(com/example/collection/Color, s);
+	}
+    //构造函数为private修饰
+	private Color(String s, int i)
+	{
+		super(s, i);
+	}
+
+	static 
+	{//成员实例在static代码块中初始化
+		READ = new Color("READ", 0);
+		BLUE = new Color("BLUE", 1);
+		PURPLE = new Color("PURPLE", 2);
+		$VALUES = (new Color[] {
+			READ, BLUE, PURPLE
+		});
+	}
+}
+```
+从反编译的代码可以看出：
+- enum编译之后生成不可变类
+- 静态常量在静态代码块中实例化成类对象
+- Java在第一次被使用的时候静态资源被初始化，Java在加载和初始化的过程中都是线程安全的(JVM使用ClassLoader的loadClass方法，该方法线程安全)
+- 所以只有一个静态常量时，天生单例
+- 可以解决反序列化破坏单例(因为继承自抽象类Enum,该类禁止方法readObject和readObjectNoData)
